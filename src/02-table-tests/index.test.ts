@@ -1,17 +1,35 @@
 // Uncomment the code below and write your tests
-/* import {  simpleCalculator, Action } from './index';
+import { simpleCalculator, Action } from './index';
 
 const testCases = [
-    { a: 1, b: 2, action: Action.Add, expected: 3 },
-    { a: 2, b: 2, action: Action.Add, expected: 4 },
-    { a: 3, b: 2, action: Action.Add, expected: 5 },
-    // continue cases for other actions    
-]; */
+  { a: 17, b: 6, action: Action.Add, expected: 23 },
+  { a: 5, b: -9, action: Action.Add, expected: -4 },
+  { a: 8, b: 93, action: Action.Add, expected: 101 },
+  { a: 17, b: 6, action: Action.Subtract, expected: 11 },
+  { a: 5, b: -9, action: Action.Subtract, expected: 14 },
+  { a: 8, b: 93, action: Action.Subtract, expected: -85 },
+  { a: 17, b: 6, action: Action.Multiply, expected: 102 },
+  { a: 5, b: -9, action: Action.Multiply, expected: -45 },
+  { a: 8, b: 93, action: Action.Multiply, expected: 744 },
+  { a: 18, b: 6, action: Action.Divide, expected: 3 },
+  { a: 5, b: -8, action: Action.Divide, expected: -0.625 },
+  { a: 8, b: 0, action: Action.Divide, expected: Infinity },
+  { a: 17, b: 6, action: Action.Exponentiate, expected: 24137569 },
+  { a: 4, b: -2, action: Action.Exponentiate, expected: 0.0625 },
+  { a: 8, b: 0, action: Action.Exponentiate, expected: 1 },
+  { a: 17, b: 6, action: 'Motor', expected: null },
+  { a: 5, b: -9, action: 'Fight', expected: null },
+  { a: 8, b: 93, action: 'Factorial', expected: null },
+  { a: 17, b: 'six', action: Action.Add, expected: null },
+  { a: 5, b: '-9', action: Action.Exponentiate, expected: null },
+  { a: 8, b: true, action: Action.Divide, expected: null },
+];
 
-describe('simpleCalculator', () => {
-  // This test case is just to run this test suite, remove it when you write your own tests
-  test('should blah-blah', () => {
-    expect(true).toBe(true);
-  });
-  // Consider to use Jest table tests API to test all cases above
-});
+describe.each(testCases)(
+  'simpleCalculator action: $action of $a and $b',
+  ({ a, b, action, expected }) => {
+    test(`returns ${expected}`, () => {
+      expect(simpleCalculator({ a, b, action })).toBe(expected);
+    });
+  },
+);
