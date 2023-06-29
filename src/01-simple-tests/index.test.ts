@@ -34,8 +34,8 @@ describe('simpleCalculator tests', () => {
     expect(div).toBe(3);
     div = simpleCalculator({ a: 5, b: -8, action: Action.Divide });
     expect(div).toBe(-0.625);
-    div = simpleCalculator({ a: 8, b: 80, action: Action.Divide });
-    expect(div).toBe(0.1);
+    div = simpleCalculator({ a: 8, b: 0, action: Action.Divide });
+    expect(div).toBe(Infinity);
   });
 
   test('should exponentiate two numbers', () => {
@@ -49,19 +49,19 @@ describe('simpleCalculator tests', () => {
 
   test('should return null for invalid action', () => {
     let res = simpleCalculator({ a: 17, b: 6, action: 'Motor' });
-    expect(res).toBeNull;
+    expect(res).toBeNull();
     res = simpleCalculator({ a: 5, b: -9, action: 'Fight' });
-    expect(res).toBeNull;
+    expect(res).toBeNull();
     res = simpleCalculator({ a: 8, b: 93, action: 'Factorial' });
-    expect(res).toBeNull;
+    expect(res).toBeNull();
   });
 
   test('should return null for invalid arguments', () => {
     let res = simpleCalculator({ a: 17, b: 'six', action: Action.Add });
-    expect(res).toBeNull;
+    expect(res).toBeNull();
     res = simpleCalculator({ a: 5, b: '-9', action: Action.Exponentiate });
-    expect(res).toBeNull;
-    res = simpleCalculator({ a: 8, b: 0, action: Action.Divide });
-    expect(res).toBeNull;
+    expect(res).toBeNull();
+    res = simpleCalculator({ a: 8, b: true, action: Action.Divide });
+    expect(res).toBeNull();
   });
 });
