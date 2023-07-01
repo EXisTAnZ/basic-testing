@@ -52,8 +52,7 @@ describe('throttledGetDataFromApi', () => {
       defaults: { baseURL },
       get: mockGet,
     } as never);
-    const response = await throttledGetDataFromApi(route);
-    console.log(response);
+    await throttledGetDataFromApi(route);
     jest.runAllTimers();
     expect(mockGet).toHaveBeenLastCalledWith(route);
   });
